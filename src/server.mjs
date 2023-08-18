@@ -20,6 +20,7 @@ fastify.post("/feedback", async function (request, reply) {
   const body = /** @type {any} */ (request.body);
   feedbackData.userId = String(body.userId);
   feedbackData.userAgent = String(request.headers["user-agent"]);
+  feedbackData.origin = String(request.headers.origin);
   feedbackData.entity = String(body.entity);
   if (body.type === "feedback") {
     feedbackData.type = "feedback";
