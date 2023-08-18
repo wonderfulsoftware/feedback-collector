@@ -42,9 +42,9 @@ fastify.post("/feedback", async function (request, reply) {
     let message;
     const entity = `\`${feedbackData.origin}${feedbackData.entity}\``;
     if (feedbackData.type === "feedback") {
-      message = `New feedback from **${feedbackData.name}** (\`${feedbackData.userId}\`) on ${entity}:\n${feedbackData.feedback}`;
+      message = `📝 New feedback from **${feedbackData.name}** (\`${feedbackData.userId}\`) on ${entity}:\n${feedbackData.feedback}`;
     } else if (feedbackData.type === "reaction") {
-      message = `New reaction from \`${feedbackData.userId}\` on ${entity}:\n${feedbackData.reaction}`;
+      message = `${feedbackData.reaction} New reaction from \`${feedbackData.userId}\` on ${entity}`;
     } else {
       message = `\`\`\`json\n${JSON.stringify(feedbackData, null, 2)}\`\`\``;
     }
