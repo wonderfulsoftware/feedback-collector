@@ -40,10 +40,11 @@ fastify.post("/feedback", async function (request, reply) {
 
   if (discordWebhookUrl) {
     let message;
+    const entity = `\`${feedbackData.origin}${feedbackData.entity}\``;
     if (feedbackData.type === "feedback") {
-      message = `New feedback from ${feedbackData.name} (${feedbackData.userId}) on ${feedbackData.entity}:\n${feedbackData.feedback}`;
+      message = `New feedback from **${feedbackData.name}** (\`${feedbackData.userId}\`) on ${entity}:\n${feedbackData.feedback}`;
     } else if (feedbackData.type === "reaction") {
-      message = `New reaction from ${feedbackData.userId} on ${feedbackData.entity}:\n${feedbackData.reaction}`;
+      message = `New reaction from \`${feedbackData.userId}\` on ${entity}:\n${feedbackData.reaction}`;
     } else {
       message = `\`\`\`json\n${JSON.stringify(feedbackData, null, 2)}\`\`\``;
     }
